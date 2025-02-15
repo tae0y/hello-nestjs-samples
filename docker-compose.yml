@@ -1,0 +1,16 @@
+services:
+  mariadb-nest:
+    image: mariadb:latest
+    container_name: mariadb-nest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nest
+      MYSQL_USER: nest
+      MYSQL_PASSWORD: nest
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./conf.d:/etc/mysql/conf.d
+      - ./init.d:/docker-entrypoint-initdb.d
+      - ./mariadb_volume:/var/lib/mysql
